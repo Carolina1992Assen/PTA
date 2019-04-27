@@ -1,13 +1,14 @@
 import nltk 
 
-# 1(a)
+
+print("*Assignment 1(a)*\n")
 
 path = "holmes.txt"
 f =open(path)
 rawText = f.read()
 f.close()
-sents = nltk.sent_tokenize(rawText)
 
+sents = nltk.sent_tokenize(rawText)
 sents_list = []
 for sen in sents:
     sents_list.append(sen)
@@ -15,19 +16,21 @@ longest_sent = sents_list.pop()
 for s in sents_list:
     if len(s) > len(longest_sent):
         longest_sent = s
-print(longest_sent)
+print("The longest sentence is: \n" + longest_sent + "\n\n")
 
-# 1(b)
+
+print("*Assignment 1(b)*\n")
 
 shortest_sent = sents_list.pop()
 for s in sents_list:
     if len(s) < len(shortest_sent):
         shortest_sent = s
-print(shortest_sent)
+print("The shortest sentence is: \n" + shortest_sent + "\n\n")
 
-# 1(c)
+
+print("*Assignment 1(c)*\n")
+
 my_dict = {}
-
 for item in sents_list:
     if len(item) not in my_dict:
        my_dict[len(item)] = 0
@@ -35,25 +38,40 @@ for item in sents_list:
        my_dict[len(item)] += 1
 
 for i in sorted(my_dict.keys()):
-    
     if my_dict[i] != 0:
-        print("number of sentences of length", i, "  :  ", my_dict[i], "sentence(s)\n")
+        print("number of sentences of length", i, "  :  ", my_dict[i], "sentence(s)")
+print("\n")
 
 
-# 1(d)
+print("*Assignment 1(d)*\n")
 
-total_length = 0
+total_length = sum([len(line) for line in sents])
 list_length = len(sents_list)
-for item in sents_list:
-    total_length += len(item)
-
 average_length = total_length / list_length
-
-print("average sentence length =", round(average_length))
-    
+print("average sentence length =", round(average_length), "\n\n")
 
 
-     
+print("*Assignment 2(a)*\n")
+
+ch_types_list = []
+ch_types = "".join(set(rawText))
+for item in ch_types:
+    ch_types_list.append(item)
+print("There have been {0} character types found.\n\nThe list below shows them all:\n\n{1}\n\n".format(len(ch_types_list), sorted(ch_types_list)))
+
+
+print("*Assignment 2(b)*\n")
+
+types = []
+for sent in sents: 
+    for word in nltk.word_tokenize(sent):
+        if word not in types:
+           types.append(word)
+print("There have been {0} word types found.\n\nThe list below shows them all:\n\n{1}\n\n".format(len(types), sorted(types)))
+
+print("*Assignment 2(c)*\n")
+
+
 
 
 
