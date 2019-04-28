@@ -1,3 +1,6 @@
+#import nltk
+import nltk
+
 # tell python we want to use gutenberg corpus
 from nltk.corpus import gutenberg
 
@@ -25,16 +28,24 @@ senseSents = gutenberg.sents('austen-emma.txt')
 # print out the first four sentences
 print(senseSents[:4])
 
-#rest moet nog, ik weet niet welke textfile ik hiervoor moet gebruiken of hoe ik daarbij kom met path.
+# print and split the text up into sentences
+sents = nltk.sent_tokenize(emmaText)
+print(sents[20:22])
 
+# tokenize sentence with nltk
+tokens = []
+for sent in sents:
+	tokens += nltk.word_tokenize(sent)
+print(tokens[300:350])
 
-# Assignment 2
+# print bigrams list
+print(list(nltk.bigrams(emmaWords)))
 
-# A
-path = (/home/carlijn/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin/
-'sherlock.txt')
+# make bigrams of given list
+bigrams = nltk.bigrams(emmaWords)
 
-# kom  er niet uit met path
-
-
+# count frequencies of bigrams and print bigram + frequency
+fdist = nltk.FreqDist(bigrams)
+for b,f in fdist.items():
+	print(b,f)
 

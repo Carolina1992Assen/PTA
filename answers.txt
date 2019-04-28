@@ -1,0 +1,8 @@
+Answers:
+
+2(C)
+Unigrams, bigrams and trigrams of characters can be for example useful for regonizing in what language a text is written or to what language family it belongs. For example the consonant to vowel ratio can differ a lot from language to language. 
+
+2(D)
+Word groups, like bigrams or trigrams, are useful for checking the meaning of words which are ambiguous. By knowing what kind of words surround a particular word it is easier to determine if a word is for example a noun or a verb.
+
