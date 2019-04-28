@@ -67,15 +67,15 @@ for sent in sents:
     for word in nltk.word_tokenize(sent):
         if word not in types:
            types.append(word)
-"""print("There have been {0} word types found.\n\nThe list below shows them all:\n\n{1}\n\n".format(len(types), sorted(types)))"""
+print("There have been {0} word types found.\n\nThe list below shows them all:\n\n{1}\n\n".format(len(types), sorted(types)))
 
 
 print("*Assignment 2(c)*\n")
 
-print("\n\nTop 20 character level unigrams(ordered by descending frequency:\n")
+print("\n\nTop 20 character level unigrams(ordered by descending frequency):\n")
 print(sorted(ch_types_list)[0:21])
 
-print("\n\nTop 20 character level bigrams(ordered by descending frequency:\n")
+print("\n\nTop 20 character level bigrams(ordered by descending frequency):\n")
 ch_tokens_list = []
 for i in range(len(rawText)):
     ch_tokens_list.append(rawText[i])
@@ -92,7 +92,7 @@ bigrams_list = sorted(bigrams_list, key=lambda tup: tup[1], reverse = True)
 for b, f in bigrams_list[:21]:
 	print(b, f)
 
-print("\n\nTop 20 character level trigrams(ordered by descending frequency:\n")
+print("\n\nTop 20 character level trigrams(ordered by descending frequency):\n")
 
 trigrams = nltk.trigrams(ch_tokens_list)
 trigrams_list = []
@@ -105,6 +105,58 @@ trigrams_list = sorted(trigrams_list, key=lambda tup: tup[1], reverse = True)
 
 for t, f in trigrams_list[:21]:
 	print(t, f)
+
+print("\n\n*Assignment 2(d)*\n")
+
+print("\n\nTop 20 unigrams(ordered by descending frequency):\n")
+tokens = []
+for sent in sents:
+	tokens += nltk.word_tokenize(sent)
+
+unigrams_list = []
+fdist = nltk.FreqDist(tokens)
+for b,f in fdist.items():
+	unigrams_list.append((b,f))
+
+unigrams_list = sorted(unigrams_list, key=lambda tup: tup[1], reverse = True)
+
+for b, f in unigrams_list[:20]:
+	print(b, f)
+
+print("\n\nTop 20 bigrams(ordered by descending frequency):\n")
+
+bigrams = nltk.bigrams(tokens)
+bigrams_list = []
+
+fdist = nltk.FreqDist(bigrams)
+for b,f in fdist.items():
+	bigrams_list.append((b,f))
+
+bigrams_list = sorted(bigrams_list, key=lambda tup: tup[1], reverse = True)
+
+for b, f in bigrams_list[:20]:
+	print(b, f)
+
+
+print("\n\nTop 20 trigrams(ordered by descending frequency):\n")
+
+
+trigrams = nltk.trigrams(tokens)
+trigrams_list = []
+
+fdist = nltk.FreqDist(trigrams)
+for b,f in fdist.items():
+	trigrams_list.append((b,f))
+
+trigrams_list = sorted(trigrams_list, key=lambda tup: tup[1], reverse = True)
+
+
+for b, f in trigrams_list[:20]:
+	print(b, f)
+
+print("\n\n\nWord groups, like bigrams, are useful for checking the meaning of words which are ambiguous. By knowing what kind of words surround a particular word it is easier to determine if a word is for example a noun or a verb.")
+
+
 
 
 
